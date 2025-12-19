@@ -1,0 +1,32 @@
+/* 🌃 MIDNIGHT (The Vaporwave Vibe) */
+[data-theme="midnight"] {
+    --bg: #0f0c29; 
+    --text: #e0e0e0; 
+    --accent: #b06ab3;
+    --font-head: 'Inter', sans-serif;
+    --radius: 12px; 
+    --border: 1px solid rgba(255,255,255,0.2);
+    --shadow: 0 0 20px rgba(176, 106, 179, 0.4); /* Purple Glow */
+    
+    /* Special Gradient Background for Midnight */
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+/* 📜 PAPER (The Analog Writer) */
+[data-theme="paper"] {
+    --bg: #f3e9d2; /* Beige Paper Color */
+    --text: #3d3b38; /* Ink Color */
+    --accent: #a63737; /* Red Stamp Color */
+    --font-head: 'Special Elite', cursive; /* Typewriter Font */
+    --font-body: 'Cormorant Garamond', serif;
+    --radius: 2px; 
+    --border: 1px dashed #999; /* Dashed Lines */
+    --shadow: 5px 5px 0px rgba(0,0,0,0.1);
+}
+
+/* Fix for Paper Texture Overlay */
+[data-theme="paper"] .noise-overlay {
+    opacity: 0.2 !important;
+    filter: sepia(1) contrast(1.2);
+    mix-blend-mode: multiply;
+}
