@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio Architect v2</title>
+    <style>
+        body { background: #0f0f12; color: white; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .glass-panel { background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 600px; backdrop-filter: blur(10px); }
+        h1 { font-weight: 300; letter-spacing: -1px; margin-bottom: 2rem; text-align: center; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(0,0,0,0.3); border: 1px solid #333; color: white; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; background: linear-gradient(45deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%); border: none; color: white; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 1rem;}
+        button:hover { transform: scale(1.02); }
+        .grid-select { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; display: block; margin-bottom: 5px; }
+        .theme-opt { padding: 15px; background: #1a1a1a; border-radius: 8px; text-align: center; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
+        input[type="radio"] { display: none; }
+        input[type="radio"]:checked + .theme-opt { border-color: #784BA0; background: #222; }
+    </style>
+</head>
+<body>
+    <div class="glass-panel">
+        <h1>Portfolio <span style="color: #784BA0">Architect</span> AI</h1>
+        <form action="/generate" method="POST">
+            <div style="display: flex; gap: 10px;">
+                <div style="flex:1">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required placeholder="e.g. Sarah Connor">
+                </div>
+                <div style="flex:1">
+                    <label>Role</label>
+                    <input type="text" name="role" required placeholder="e.g. Cyber Security">
+                </div>
+            </div>
+
+            <label>Skills & Tech Stack</label>
+            <input type="text" name="skills" required placeholder="e.g. Python, Ethical Hacking, Linux">
+
+            <label>Select Aesthetic Engine</label>
+            <div class="grid-select">
+                {% for key, val in themes.items() %}
+                <label>
+                    <input type="radio" name="theme" value="{{ key }}" required>
+                    <div class="theme-opt">
+                        <strong>{{ val.name }}</strong><br>
+                        <small style="opacity: 0.6">{{ val.layout_type | title }} Layout</small>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Initialize Generation</button>
+        </form>
+    </div>
+</body>
+</html>
